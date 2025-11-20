@@ -106,63 +106,60 @@ model_deit.load_state_dict(torch.load('models/deit_small_best.pth'))
 
 ## Hasil Eksperimen
 
-### Performa Per Kelas (F1-Score)
+### Performa Per Kelas (Confusion Metrices)
 
 | Kelas | Swin-Tiny | DeiT-Small |
 |-------|-----------|------------|
-| Airplane | 0.99 | 0.98 |
-| Bird | 0.95 | 0.94 |
-| Car | 0.98 | 0.97 |
-| Cat | 0.93 | 0.92 |
+| Airplane | 0.99 | 0.99 |
+| Bird | 0.98 | 0.97 |
+| Car | 0.97 | 0.98 |
+| Cat | 0.96 | 0.95 |
 | Deer | 0.97 | 0.96 |
-| Dog | 0.95 | 0.94 |
+| Dog | 0.94 | 0.94 |
 | Horse | 0.98 | 0.97 |
-| Monkey | 0.96 | 0.95 |
-| Ship | 0.99 | 0.98 |
-| Truck | 0.98 | 0.97 |
+| Monkey | 0.98 | 0.98 |
+| Ship | 0.99 | 0.99 |
+| Truck | 0.96 | 0.97 |
 
 ### Learning Curves
 
 Training dan validation curves menunjukkan:
 - Kedua model konvergen dengan baik tanpa overfitting signifikan
-- Swin Tiny mencapai best validation accuracy di epoch 27
-- DeiT Small konvergen lebih cepat di epoch 25
+- Swin Tiny mencapai best validation accuracy di epoch 12
+- DeiT Small konvergen lebih cepat di epoch 9
 
 ## Rekomendasi
 
 ### Untuk Akurasi Maksimal
 **Pilih: Swin Transformer Tiny**
-- Akurasi tertinggi (96.75%)
-- Konsisten di semua kelas
+- Akurasi tertinggi (97.36%)
 - Cocok untuk: medical imaging, quality control
 
 ### Untuk Efisiensi Komputasi
 **Pilih: DeiT Small**
-- Model lebih kecil (84 MB)
-- Training lebih cepat (38 menit)
+- Model lebih kecil
+- Training lebih cepat (3 menit lebih cepat)
 - Cocok untuk: mobile apps, edge devices
 
 
 ## Metodologi
 
 ### Training Configuration
-- **Optimizer**: AdamW (lr=5e-5, weight_decay=0.05)
-- **Scheduler**: CosineAnnealingLR (T_max=30)
-- **Batch size**: 32
-- **Epochs**: 30
-- **Mixed Precision**: Enabled (AMP)
-- **Early Stopping**: Patience 10
+- **Optimizer**: AdamW (lr=0.0001, weight_decay=0.01)
+- **Scheduler**: CosineAnnealingLR
+- **Batch size**: 16
+- **Epochs**: 15
 
 ### Data Augmentation
-- Resize to 224×224 (bicubic)
-- Random horizontal flip (p=0.5)
-- Random rotation (±15°)
+- RandomResizedCrop
+- Random horizontal flip
+- Random rotation
 - Color jitter (brightness, contrast, saturation, hue)
 - ImageNet normalization
 
 ### Hardware
 - Platform: Google Colab
-- GPU: NVIDIA Tesla T4 (15GB VRAM)
+- GPU: NVIDIA Tesla T4
 - CUDA: 12.x
 
 ## Author
