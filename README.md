@@ -14,12 +14,11 @@ Eksperimen ini bertujuan untuk:
 
 | Metrik | Swin-Tiny | DeiT-Small | 
 |--------|-----------|------------|
-| Test Accuracy | **96.75%** | 95.98% | 
-| Inference Time/img | **2.45 ms** | 2.89 ms | 
-| Throughput | **408 img/s** | 346 img/s | 
-| Model Size | 107.9 MB | **84.1 MB** | 
-| Training Time | 45 min | **38 min** | 
-| Parameters | 28.3M | **22.1M** | 
+| Test Accuracy | **97.36%** | 97.01% | 
+| Inference Time/img | 5.62 ms | **1.92ms** | 
+| Throughput | 178 img/s | **520 img/s** | 
+| Training Time | 8.2 min | **5 min** | 
+| Parameters | 27.5M | **21.6M** | 
 
 ## Dataset
 
